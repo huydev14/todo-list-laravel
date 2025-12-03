@@ -50,7 +50,14 @@
                                 <a href="{{ route('tasks.show', $task->id) }}"
                                     class="btn btn-sm btn-info text-white">Xem</a>
                                 <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-sm btn-warning">Sửa</a>
-                                <button class="btn btn-sm btn-danger">Xóa</button>
+
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
+                                    style="display:inline-block;"
+                                    onsubmit="return confirm('Bạn có chắc chắn muốn xóa task này không?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger">Xóa</button>
+                                </form>
                             </td>
                         </tr>
                         @empty
