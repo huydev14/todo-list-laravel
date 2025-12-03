@@ -30,7 +30,6 @@
                                         <span class="badge bg-primary">Chưa bắt đầu</span>
                                     @break
 
-                                    @endde
                                     @case(1)
                                         <span class="badge bg-warning">Đang làm</span>
                                     @break
@@ -42,7 +41,8 @@
 
                             </td>
                             <td class="text-end">
-                                <a href="{{ route('tasks.show', 1) }}" class="btn btn-sm btn-info text-white">Xem</a>
+                                <a href="{{ route('tasks.show', $task->id) }}"
+                                    class="btn btn-sm btn-info text-white">Xem</a>
                                 <a href="{{ route('tasks.edit', 1) }}" class="btn btn-sm btn-warning">Sửa</a>
                                 <button class="btn btn-sm btn-danger">Xóa</button>
                             </td>
