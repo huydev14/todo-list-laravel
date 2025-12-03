@@ -1,6 +1,12 @@
 @extends('tasks.layout')
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible face show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss='alert' aria-label="Close"></button>
+        </div>
+    @endif
     <div class="card shadow-sm">
         <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Danh sách công việc</h5>
@@ -43,7 +49,7 @@
                             <td class="text-end">
                                 <a href="{{ route('tasks.show', $task->id) }}"
                                     class="btn btn-sm btn-info text-white">Xem</a>
-                                <a href="{{ route('tasks.edit', 1) }}" class="btn btn-sm btn-warning">Sửa</a>
+                                <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-sm btn-warning">Sửa</a>
                                 <button class="btn btn-sm btn-danger">Xóa</button>
                             </td>
                         </tr>

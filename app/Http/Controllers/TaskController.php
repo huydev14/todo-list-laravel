@@ -53,15 +53,21 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('tasks.edit', compact('task'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreTaskRequest $request, string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        $task->update($request->only('title', 'description', 'due_date', 'status'));
+
+        return redirect()->route('tasks.index')
+            ->with('success', 'Update task successfully');
     }
 
     /**
